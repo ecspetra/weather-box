@@ -1,16 +1,15 @@
 import FetchSrc from "../FetchSrc/FetchSrc";
+import { DEFAULT_QUERY } from "../../apiConstants/apiConstants";
 import './assets/index.scss';
 
 const App = () => {
-  return (
-    <div className="app">
-      <FetchSrc src={'forecast?id=524901'}>
-          <>
-            sdv
-          </>
-      </FetchSrc>
-    </div>
-  );
+	const CURRENT_FORECAST = 'forecast?id=524901'
+	return (
+		<div className="app">
+			<FetchSrc src={CURRENT_FORECAST} isFetchForecast />
+			{/*<FetchSrc src={DEFAULT_QUERY} />*/}
+		</div>
+	);
 };
 
 export default App;
