@@ -1,51 +1,50 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "./index";
 
-export interface CurrentForecast {
-	city: {
-		id: number;
-		name: string;
-		country: string;
-	};
-	list: [
-		{
-			dt: number,
-			main: {
-				feels_like: number,
-				humidity: number,
-				pressure: number,
-				temp: number,
-				temp_max: number,
-				temp_min: number,
-			},
-			visibility: number,
-			weather: [
-				{
-					id: number,
-					main: string,
-					description: string,
-					icon: string,
-				},
-			],
-			wind: {
-				deg: number,
-				speed: number,
-			},
-		}
-	]
+export interface ICurrentForecastCity {
+	id: number;
+	name: string;
+	country: string;
 }
 
-const initialState: CurrentForecast = null;
+export interface ICurrentForecastList {
+	dt: number,
+	main: {
+		feels_like: number,
+		humidity: number,
+		pressure: number,
+		temp: number,
+		temp_max: number,
+		temp_min: number,
+	},
+	visibility: number,
+	weather: [
+		{
+			id: number,
+			main: string,
+			description: string,
+			icon: string,
+		},
+	],
+	wind: {
+		deg: number,
+		speed: number,
+	},
+}
+
+export interface ICurrentForecast {
+	city: ICurrentForecastCity;
+	list: Array<ICurrentForecastList>;
+}
+
+const initialState: ICurrentForecast = null;
 
 export const currentForecastSlice = createSlice({
 	name: 'currentForecast',
 	initialState,
 	reducers: {
-		addForecast: (state, action: PayloadAction<CurrentForecast>) => {
+		addForecast: (state, action: PayloadAction<ICurrentForecast>) => {
 			return action.payload;
-			// console.log(action.payload)
-			// state.city = action.payload.city;
-			// state.list = action.payload.list;
 		}
 	}
 });

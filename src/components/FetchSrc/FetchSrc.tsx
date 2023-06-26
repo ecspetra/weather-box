@@ -4,7 +4,7 @@ import { addCity, City } from "../../redux/CitiesReducer";
 import { useAppDispatch } from "../../hooks/hooks";
 import WeatherList from "../WeatherList/WeatherList";
 import CurrentForecast from "../CurrentForecast/CurrentForecast";
-import { addForecast } from "../../redux/CurrentForecastReducer";
+import { addForecast, ICurrentForecastList } from "../../redux/CurrentForecastReducer";
 
 
 type FetchSrcPropTypes = {
@@ -19,8 +19,42 @@ const FetchSrc: FC<FetchSrcPropTypes> = ({ src, isFetchForecast }) => {
 
     const fetchCurrentForecast = async () => {
         const fetchedData = await fetchDataFromAPI(src);
-        console.log(fetchedData)
-        dispatch(addForecast(fetchedData));
+
+        const newForecast = {
+            city: {
+                id: fetchedData.city.id,
+                name: fetchedData.city.name,
+                country: fetchedData.city.country,
+            },
+            list: fetchedData.list.map((item: ICurrentForecastList) => {
+                return {
+                    dt: item.dt,
+                    main: {
+                        feels_like: item.main.feels_like,
+                        humidity: item.main.humidity,
+                        pressure: item.main.pressure,
+                        temp: item.main.temp,
+                        temp_max: item.main.temp_max,
+                        temp_min: item.main.temp_min,
+                    },
+                    visibility: item.visibility,
+                    weather: [
+                        {
+                            id: item.weather[0].id,
+                            main: item.weather[0].main,
+                            description: item.weather[0].description,
+                            icon: item.weather[0].icon,
+                        },
+                    ],
+                    wind: {
+                        deg: item.wind.deg,
+                        speed: item.wind.speed,
+                    }
+                }
+            })
+        }
+
+        dispatch(addForecast(newForecast));
         setIsResultExist(true);
         setIsLoading(false);
     }
