@@ -16,6 +16,7 @@ const CurrentForecast = () => {
 			<p className="current-forecast__country">{selectedForecast.city.country}</p>
 			<p className="current-forecast__sun-time">{sunriseTime}</p>
 			<p className="current-forecast__sun-time">{sunsetTime}</p>
+			<p className="current-forecast__temp">{Math.round(selectedForecast.city.temp)}</p>
 			<div className="current-forecast__forecast">
 				{selectedForecast.list.map((item, idx) => {
 					if (moment(new Date(item.dt * 1000)).format("h:mm a") === '11:00 am') {

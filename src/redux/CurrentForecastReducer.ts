@@ -7,6 +7,7 @@ export interface ICurrentForecastCity {
 	country: string;
 	sunrise: number;
 	sunset: number;
+	temp: number;
 }
 
 export interface ICurrentForecastList {
