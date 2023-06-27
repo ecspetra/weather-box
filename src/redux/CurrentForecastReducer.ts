@@ -5,6 +5,8 @@ export interface ICurrentForecastCity {
 	id: number;
 	name: string;
 	country: string;
+	sunrise: number;
+	sunset: number;
 }
 
 export interface ICurrentForecastList {
@@ -27,7 +29,6 @@ export interface ICurrentForecastList {
 		},
 	],
 	wind: {
-		deg: number,
 		speed: number,
 	},
 }

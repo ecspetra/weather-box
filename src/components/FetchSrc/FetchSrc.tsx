@@ -25,6 +25,8 @@ const FetchSrc: FC<FetchSrcPropTypes> = ({ src, isFetchForecast }) => {
                 id: fetchedData.city.id,
                 name: fetchedData.city.name,
                 country: fetchedData.city.country,
+                sunrise: fetchedData.city.sunrise,
+                sunset: fetchedData.city.sunset,
             },
             list: fetchedData.list.map((item: ICurrentForecastList) => {
                 return {
@@ -47,7 +49,6 @@ const FetchSrc: FC<FetchSrcPropTypes> = ({ src, isFetchForecast }) => {
                         },
                     ],
                     wind: {
-                        deg: item.wind.deg,
                         speed: item.wind.speed,
                     }
                 }
