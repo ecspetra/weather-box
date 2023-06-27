@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "./index";
 
-export interface City {
+export interface ICity {
 	id: number;
 	name: string;
 	main: {
@@ -9,41 +9,29 @@ export interface City {
 		humidity: number,
 		pressure: number,
 		temp: number,
-		temp_max: number,
-		temp_min: number,
 	};
 	sys: {
 		country: string,
 		sunrise: number,
 		sunset: number,
-		timezone: number,
 	};
 	visibility: number;
-	weather: [
-		{
-			id: number,
-			main: string,
-			description: string,
-			icon: string,
-		},
-	];
+	weather: {
+		id: number,
+		description: string,
+	} [];
 	wind: {
-		deg: number,
 		speed: number,
 	};
 }
 
-export interface Cities {
-	list: Array<City>
-}
-
-const initialState: Array<City> = [];
+const initialState: Array<ICity> = [];
 
 export const citiesSlice = createSlice({
 	name: 'cities',
 	initialState,
 	reducers: {
-		addCity: (state, action: PayloadAction<City>) => {
+		addCity: (state, action: PayloadAction<ICity>) => {
 			return [...state, action.payload];
 		}
 	}

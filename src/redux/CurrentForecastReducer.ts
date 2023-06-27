@@ -10,27 +10,21 @@ export interface ICurrentForecastCity {
 }
 
 export interface ICurrentForecastList {
-	dt: number,
+	dt: number;
 	main: {
 		feels_like: number,
 		humidity: number,
 		pressure: number,
 		temp: number,
-		temp_max: number,
-		temp_min: number,
 	},
-	visibility: number,
-	weather: [
-		{
-			id: number,
-			main: string,
-			description: string,
-			icon: string,
-		},
-	],
+	visibility: number;
+	weather: {
+		id: number,
+		description: string,
+	} [];
 	wind: {
 		speed: number,
-	},
+	};
 }
 
 export interface ICurrentForecast {

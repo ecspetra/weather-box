@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import { fetchDataFromAPI } from "../../handlers/fetchDataFromAPI";
-import { addCity, City } from "../../redux/CitiesReducer";
+import { addCity, ICity } from "../../redux/CitiesReducer";
 import { useAppDispatch } from "../../hooks/hooks";
 import WeatherList from "../WeatherList/WeatherList";
 import CurrentForecast from "../CurrentForecast/CurrentForecast";
@@ -19,7 +19,6 @@ const FetchSrc: FC<FetchSrcPropTypes> = ({ src, isFetchForecast }) => {
 
     const fetchCurrentForecast = async () => {
         const fetchedData = await fetchDataFromAPI(src);
-
         const newForecast = {
             city: {
                 id: fetchedData.city.id,
@@ -36,16 +35,12 @@ const FetchSrc: FC<FetchSrcPropTypes> = ({ src, isFetchForecast }) => {
                         humidity: item.main.humidity,
                         pressure: item.main.pressure,
                         temp: item.main.temp,
-                        temp_max: item.main.temp_max,
-                        temp_min: item.main.temp_min,
                     },
                     visibility: item.visibility,
                     weather: [
                         {
                             id: item.weather[0].id,
-                            main: item.weather[0].main,
                             description: item.weather[0].description,
-                            icon: item.weather[0].icon,
                         },
                     ],
                     wind: {
@@ -62,7 +57,37 @@ const FetchSrc: FC<FetchSrcPropTypes> = ({ src, isFetchForecast }) => {
 
     const fetchDefaultCitiesList = async () => {
         const fetchedData = await fetchDataFromAPI(src);
-        fetchedData.list.map((item: City) => dispatch(addCity(item)));
+
+        fetchedData.list.map((item: ICity) => {
+            const newCity = {
+                id: item.id,
+                name: item.name,
+                main: {
+                    feels_like: item.main.feels_like,
+                    humidity: item.main.humidity,
+                    pressure: item.main.pressure,
+                    temp: item.main.temp,
+                },
+                sys: {
+                    country: item.sys.country,
+                    sunrise: item.sys.sunrise,
+                    sunset: item.sys.sunset,
+                },
+                visibility: item.visibility,
+                weather: [
+                    {
+                        id: item.weather[0].id,
+                        description: item.weather[0].description,
+                    },
+                ],
+                wind: {
+                    speed: item.wind.speed,
+                },
+            }
+
+            dispatch(addCity(newCity));
+        });
+
         setIsResultExist(true);
         setIsLoading(false);
     }

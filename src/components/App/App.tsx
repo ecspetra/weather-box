@@ -3,7 +3,7 @@ import { DEFAULT_QUERY } from "../../apiConstants/apiConstants";
 import './assets/index.scss';
 
 const App = () => {
-	const CURRENT_FORECAST = 'forecast?q=vancouver&cnt=7';
+	const CURRENT_FORECAST = 'forecast?lat=49.24966&lon=-123.119339';
 
 	return (
 		<div className="app">
