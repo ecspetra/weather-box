@@ -1,9 +1,54 @@
 .current-forecast {
+	min-height: 100vh;
+	background-image: url("images/image-bg-1.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 
-	&__item {
-		border: 1px solid black;
+	&__city-info {
+		margin-top: auto;
 	}
-	span {
+
+	&__country {
+		font-size: .7em;
+	}
+
+	&__city {
+		font-size: 6em;
+	}
+
+	&__sun-time-wrap {
+		max-width: 200px;
+		margin-bottom: 40px;
+	}
+
+	&__sun-time {
+		display: flex;
+		background-color: rgba(black, .8);
+		border-radius: 24px;
+		padding: 12px 18px;
+
+		&:not(:last-child) {
+			margin-bottom: 10px;
+		}
+	}
+
+	&__temp {
+		font-size: 6em;
 		display: block;
+		margin: 100px 0 20px;
+	}
+
+	&__container {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+	}
+
+	&__forecast {
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+		margin-top: auto;
 	}
 }

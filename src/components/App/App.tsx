@@ -4,26 +4,22 @@ import WeatherList from "../WeatherList/WeatherList";
 import CurrentForecast from "../CurrentForecast/CurrentForecast";
 import {fetchCurrentForecast} from "../../handlers/fetchCurrentForecast";
 import {fetchDefaultCitiesList} from "../../handlers/fetchDefaultCitiesList";
-import './assets/index.scss';
 import CurrentCitySearch from "../CurrentCitySearch/CurrentCitySearch";
+import {useUserLocation} from "../../hooks/useUserLocation";
+import './assets/index.scss';
 
 const App = () => {
-	// const CURRENT_FORECAST = 'forecast?lat=49.24966&lon=-123.119339';
-
-	const defaultCity = {
-		name: 'Vancouver',
-		state: 'British Columbia',
-		country: 'CA',
-		lat: 49.24966,
-		lon: -123.119339,
-	}
+	const [defaultCity, geolocationMessage] = useUserLocation();
 
 	return (
 		<div className="app">
-			<CurrentCitySearch />
-			<FetchSrc city={defaultCity} fetchFunction={fetchCurrentForecast}>
-				<CurrentForecast />
-			</FetchSrc>
+			<>{geolocationMessage}</>
+			<div className="app__current-city-weather">
+				<CurrentCitySearch />
+				<FetchSrc city={defaultCity} fetchFunction={fetchCurrentForecast}>
+					<CurrentForecast />
+				</FetchSrc>
+			</div>
 			<FetchSrc city={DEFAULT_QUERY} fetchFunction={fetchDefaultCitiesList}>
 				<WeatherList />
 			</FetchSrc>

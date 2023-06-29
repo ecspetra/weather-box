@@ -4,7 +4,6 @@ import CurrentCitySearchResults, {
     ICurrentCity
 } from "../CurrentCitySearch/CurrentCitySearchResults/CurrentCitySearchResults";
 
-
 type FetchCitiesPropTypes = {
     src: string;
 }
@@ -14,15 +13,14 @@ const FetchCities: FC<FetchCitiesPropTypes> = ({ src }) => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     useEffect(() => {
-        setIsLoading(true);
+        if (src !== '') {
+            setIsLoading(true);
 
-        setTimeout(() => {
             fetchCitiesByQuery(src).then((data: []) => {
                 if (data) setCitiesList(data);
                 setIsLoading(false);
             });
-        }, 300);
-
+        }
     }, [src]);
 
     if (isLoading === true) {

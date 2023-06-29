@@ -1,11 +1,13 @@
-import React, { FC } from 'react';
+import React, {FC} from 'react';
 import {fetchCurrentForecast} from "../../../handlers/fetchCurrentForecast";
 import {useAppDispatch} from "../../../hooks/hooks";
 
+import './assest/index.scss';
+
 export interface ICurrentCity {
-	name: string;
-	state: string;
-	country: string;
+	name?: string;
+	state?: string;
+	country?: string;
 	lat: number;
 	lon: number;
 }
@@ -17,8 +19,6 @@ type CurrentCitySearchResultsPropTypes = {
 const CurrentCitySearchResults: FC<CurrentCitySearchResultsPropTypes> = ({ citiesList }) => {
 	const dispatch = useAppDispatch();
 
-	console.log(citiesList);
-
 	const handleSetCurrentCity = (city: ICurrentCity) => {
 		fetchCurrentForecast(city, dispatch);
 	}
@@ -27,7 +27,7 @@ const CurrentCitySearchResults: FC<CurrentCitySearchResultsPropTypes> = ({ citie
 		<div className="current-city-search-results">
 			{citiesList.map((item, idx) => {
 				return (
-					<button key={idx} onClick={() => handleSetCurrentCity(item)}>{`${item.name}, ${item.state}, ${item.country}`}</button>
+					<button className="current-city-search-results__button" key={idx} onClick={() => handleSetCurrentCity(item)}>{`${item.name}, ${item.state}, ${item.country}`}</button>
 				)
 			})}
 		</div>
