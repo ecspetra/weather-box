@@ -2,12 +2,14 @@ import React, {useEffect, useState} from 'react';
 import { useAppSelector } from "../../hooks/hooks";
 import { forecastSelector } from "../../redux/CurrentForecastReducer";
 import moment from 'moment';
-
+import Modal from "../Modal/Modal";
 import CurrentForecastItem, {ICurrentForecastItem} from "./CurrentForecastItem/CurrentForecastItem";
 import './assest/index.scss';
+import CurrentCitySearch from "../CurrentCitySearch/CurrentCitySearch";
 
 const CurrentForecast = () => {
 	const [forecastItems, setForecastItems] = useState<Array<ICurrentForecastItem>>([]);
+	const [isShowModal, setIsShowModal] = useState<boolean>(false);
 	const selectedForecast = useAppSelector(forecastSelector);
 	const sunriseTime = moment(new Date(selectedForecast.city.sunrise * 1000)).format("h:mm a");
 	const sunsetTime = moment(new Date(selectedForecast.city.sunset * 1000)).format("h:mm a");
@@ -45,12 +47,17 @@ const CurrentForecast = () => {
 						<span className="current-forecast__sun-time">Sunset {sunsetTime}</span>
 					</div>
 				</div>
-				<button onClick={() => {}}>Select another city</button>
+				<button onClick={() => {setIsShowModal(true)}}>Select another city</button>
 				<div className="current-forecast__forecast">
 					{forecastItems.map((item: ICurrentForecastItem, idx: number) => {
 						return <CurrentForecastItem forecastItem={item} key={idx} />
 					})}
 				</div>
+				{isShowModal && (
+					<Modal handleCloseModal={setIsShowModal} modalTitle="Select another city">
+						<CurrentCitySearch />
+					</Modal>
+				)}
 			</div>
 		</div>
 	)

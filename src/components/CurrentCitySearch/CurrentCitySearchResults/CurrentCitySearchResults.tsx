@@ -14,13 +14,15 @@ export interface ICurrentCity {
 
 type CurrentCitySearchResultsPropTypes = {
 	citiesList: Array<ICurrentCity>;
+	[rest: string]: any;
 }
 
-const CurrentCitySearchResults: FC<CurrentCitySearchResultsPropTypes> = ({ citiesList }) => {
+const CurrentCitySearchResults: FC<CurrentCitySearchResultsPropTypes> = ({ citiesList, handleCloseModal }) => {
 	const dispatch = useAppDispatch();
 
 	const handleSetCurrentCity = (city: ICurrentCity) => {
 		fetchCurrentForecast(city, dispatch);
+		handleCloseModal(false);
 	}
 
 	return (

@@ -8,9 +8,11 @@ type FetchCitiesPropTypes = {
     src: string;
 }
 
-const FetchCities: FC<FetchCitiesPropTypes> = ({ src }) => {
+const FetchCities: FC<FetchCitiesPropTypes> = ({ src, ...rest }) => {
     const [citiesList, setCitiesList] = useState<Array<ICurrentCity>>([]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
+
+    // console.log(rest)
 
     useEffect(() => {
         if (src !== '') {
@@ -25,10 +27,10 @@ const FetchCities: FC<FetchCitiesPropTypes> = ({ src }) => {
 
     if (isLoading === true) {
         return <>Loading</>
-    } else if (!citiesList.length && isLoading === false) return;
+    } else if (!citiesList.length && isLoading === false) return null;
 
     return (
-        <CurrentCitySearchResults citiesList={citiesList} />
+        <CurrentCitySearchResults citiesList={citiesList} {...rest} />
     );
 };
 

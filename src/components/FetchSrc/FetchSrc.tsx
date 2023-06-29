@@ -27,7 +27,7 @@ const FetchSrc: FC<FetchSrcPropTypes> = ({ city, children, fetchFunction }) => {
 
     if (isLoading === true) {
         return <>Loading</>
-    } else if (!isResultExist && isLoading === false) return;
+    } else if (!isResultExist && isLoading === false) return null;
 
     return (
         <>
