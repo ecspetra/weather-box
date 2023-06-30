@@ -4,8 +4,8 @@ import { forecastSelector } from "../../redux/CurrentForecastReducer";
 import moment from 'moment';
 import Modal from "../Modal/Modal";
 import CurrentForecastItem, {ICurrentForecastItem} from "./CurrentForecastItem/CurrentForecastItem";
-import './assest/index.scss';
 import CurrentCitySearch from "../CurrentCitySearch/CurrentCitySearch";
+import './assest/index.scss';
 
 const CurrentForecast = () => {
 	const [forecastItems, setForecastItems] = useState<Array<ICurrentForecastItem>>([]);
@@ -40,18 +40,21 @@ const CurrentForecast = () => {
 		<div className="current-forecast">
 			<div className="current-forecast__container container">
 				<div className="current-forecast__city-info">
-					<h2 className="current-forecast__city">{selectedForecast.city.name} <span className="current-forecast__country">({selectedForecast.city.country})</span></h2>
+					<h1 className="current-forecast__city">{selectedForecast.city.name} <span className="current-forecast__country">({selectedForecast.city.country})</span></h1>
 					<span className="current-forecast__temp">{Math.round(selectedForecast.city.temp)}&#8451;</span>
 					<div className="current-forecast__sun-time-wrap">
 						<span className="current-forecast__sun-time">Sunrise {sunriseTime}</span>
 						<span className="current-forecast__sun-time">Sunset {sunsetTime}</span>
 					</div>
 				</div>
-				<button onClick={() => {setIsShowModal(true)}}>Select another city</button>
-				<div className="current-forecast__forecast">
-					{forecastItems.map((item: ICurrentForecastItem, idx: number) => {
-						return <CurrentForecastItem forecastItem={item} key={idx} />
-					})}
+				<button className="current-forecast__button" onClick={() => {setIsShowModal(true)}}>Select another city</button>
+				<div className="current-forecast__forecast-wrap">
+					<h2 className="current-forecast__forecast-title">Daily forecast</h2>
+					<div className="current-forecast__forecast">
+						{forecastItems.map((item: ICurrentForecastItem, idx: number) => {
+							return <CurrentForecastItem forecastItem={item} key={idx} />
+						})}
+					</div>
 				</div>
 				{isShowModal && (
 					<Modal handleCloseModal={setIsShowModal} modalTitle="Select another city">

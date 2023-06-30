@@ -14,12 +14,20 @@
 	}
 
 	&__city {
-		font-size: 6em;
+		font-size: 8em;
+		font-family: 'Staatliches', cursive;
 	}
 
 	&__sun-time-wrap {
 		max-width: 200px;
 		margin-bottom: 40px;
+	}
+
+	&__button {
+		border: 0;
+		outline: 0;
+		padding: 20px;
+		border-radius: 4px;
 	}
 
 	&__sun-time {

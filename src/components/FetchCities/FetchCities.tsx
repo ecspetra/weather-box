@@ -12,8 +12,6 @@ const FetchCities: FC<FetchCitiesPropTypes> = ({ src, ...rest }) => {
     const [citiesList, setCitiesList] = useState<Array<ICurrentCity>>([]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    // console.log(rest)
-
     useEffect(() => {
         if (src !== '') {
             setIsLoading(true);

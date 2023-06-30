@@ -2,15 +2,17 @@ html,
 body {
 	padding: 0;
 	margin: 0;
+	font-family: 'Urbanist', sans-serif;
 }
 
 * {
 	box-sizing: border-box;
 }
 
-h2,
-h3 {
+h1,
+h2 {
 	margin: 0;
+	font-weight: normal;
 }
 
 .modal-open {
@@ -20,6 +22,10 @@ h3 {
 .app {
 	color: white;
 	line-height: 1;
+
+	&__logo {
+		font-family: 'Tilt Prism', cursive;
+	}
 }
 
 .container {

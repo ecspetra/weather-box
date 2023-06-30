@@ -6,6 +6,7 @@ import {fetchCurrentForecast} from "../../handlers/fetchCurrentForecast";
 import {fetchDefaultCitiesList} from "../../handlers/fetchDefaultCitiesList";
 import {useUserLocation} from "../../hooks/useUserLocation";
 import './assets/index.scss';
+import Header from "../Header/Header";
 
 const App = () => {
 	const [defaultCity, geolocationMessage] = useUserLocation();
@@ -13,6 +14,7 @@ const App = () => {
 	return (
 		<div className="app">
 			<>{geolocationMessage}</>
+			<Header />
 			<div className="app__current-city-weather">
 				<FetchSrc city={defaultCity} fetchFunction={fetchCurrentForecast}>
 					<CurrentForecast />

@@ -8,7 +8,7 @@ type WeatherItemPropTypes = {
 const WeatherItem: FC<WeatherItemPropTypes> = ({ city }) => {
 	return (
 		<div className="weather-item">
-			<h3 className="weather-item__city">{city.name}</h3>
+			<h2 className="weather-item__city">{city.name}</h2>
 			<p className="weather-item__temp">{city.main.temp}</p>
 			<span className="weather-item__feels-like">{city.main.feels_like}</span>
 			<span className="weather-item__country">{city.sys.country}</span>
