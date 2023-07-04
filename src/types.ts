@@ -61,23 +61,27 @@ export interface ICurrentForecast {
 
 export interface ICurrentFiveDaysForecastItem {
 	date: number;
-	day?: {
+	day: {
 		description: string,
-		humidity: number;
-		visibility: number;
-		pressure: number;
 		temp: number;
-		windSpeed: number;
 		icon: string;
+		info: {
+			humidity: number;
+			visibility: number;
+			pressure: number;
+			windSpeed: number;
+		};
 	};
-	night?: {
+	night: {
 		description: string,
-		humidity: number;
-		visibility: number;
-		pressure: number;
 		temp: number;
-		windSpeed: number;
 		icon: string;
+		info: {
+			humidity: number;
+			visibility: number;
+			pressure: number;
+			windSpeed: number;
+		};
 	}
 }
 

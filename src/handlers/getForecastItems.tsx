@@ -27,21 +27,25 @@ export const getForecastItems = (selectedForecast: ICurrentForecast, cityTimezon
 			date: day.dt,
 			day: {
 				description: day.weather[0].description,
-				humidity: day.main.humidity,
-				visibility: day.visibility,
-				pressure: day.main.pressure,
 				temp: day.main.temp,
-				windSpeed: day.wind.speed,
 				icon: getForecastIcon(day.weather[0].icon),
+				info: {
+					humidity: day.main.humidity,
+					visibility: day.visibility,
+					pressure: day.main.pressure,
+					windSpeed: day.wind.speed,
+				},
 			},
 			night: {
 				description: night.weather[0].description,
-				humidity: night.main.humidity,
-				visibility: night.visibility,
-				pressure: night.main.pressure,
 				temp: night.main.temp,
-				windSpeed: night.wind.speed,
 				icon: getForecastIcon(night.weather[0].icon),
+				info: {
+					humidity: night.main.humidity,
+					visibility: night.visibility,
+					pressure: night.main.pressure,
+					windSpeed: night.wind.speed,
+				},
 			}
 		}
 

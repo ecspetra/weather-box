@@ -13,7 +13,7 @@ const CurrentThreeHoursForecastItem: FC<CurrentForecastItemPropTypes> = ({ forec
 		<div className="current-three-hours-forecast-item">
 			<span className="current-three-hours-forecast-item__date">{moment(forecastItem.date * 1000).format("h:mm a")}</span>
 			<img className="current-three-hours-forecast-item__icon weather-icon" src={forecastItem.icon} alt="weather-img" />
-			<span className="current-three-hours-forecast-item__temp">{forecastItem.temp}</span>
+			<span className="current-three-hours-forecast-item__temp">{Math.round(forecastItem.temp)}&#8451;</span>
 		</div>
 	)
 }

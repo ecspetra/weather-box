@@ -8,15 +8,6 @@
 		margin-right: 15px;
 	}
 
-	span {
-		display: flex;
-		align-items: flex-end;
-
-		&:not(:last-of-type) {
-			margin-bottom: 6px;
-		}
-	}
-
 	&__info-wrap {
 		display: flex;
 		flex-direction: column;
@@ -49,6 +40,48 @@
 		margin-left: auto;
 	}
 
+	&__details {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+
+		&:not(:last-of-type) {
+			margin-bottom: 6px;
+		}
+	}
+
+	&__details-icon {
+		width: 20px;
+		height: 20px;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: contain;
+		margin-right: 6px;
+
+		&--humidity {
+			background-image: url("../../../App/assets/icons/drop-icon.svg");
+		}
+
+		&--visibility {
+			background-image: url("../../../App/assets/icons/eye-icon.svg");
+		}
+
+		&--pressure {
+			background-image: url("../../../App/assets/icons/pressure-icon.svg");
+		}
+
+		&--windSpeed {
+			background-image: url("../../../App/assets/icons/wind-icon.svg");
+		}
+	}
+
+	&__details-text {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
 	&__general {
 		display: flex;
 		justify-items: flex-start;
@@ -68,30 +101,6 @@
 
 	&__date {
 		margin-bottom: 20px;
-	}
-
-	&__humidity {
-
-	}
-
-	&__visibility {
-
-	}
-
-	&__pressure {
-
-	}
-
-	&__forecast-temp {
-
-	}
-
-	&__description {
-
-	}
-
-	&__wind-speed {
-
 	}
 
 	&__text {
