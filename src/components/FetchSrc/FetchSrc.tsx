@@ -1,7 +1,7 @@
 import React, {FC, JSX, useEffect, useState, Dispatch} from 'react';
 import { useAppDispatch } from "../../hooks/hooks";
 import {Action} from "redux";
-import {ICurrentCity} from "../CurrentCitySearch/CurrentCitySearchResults/CurrentCitySearchResults";
+import {ICurrentCity} from "../../types";
 
 
 type FetchSrcPropTypes = {

@@ -1,7 +1,8 @@
 import {fetchDataFromAPI} from "./fetchDataFromAPI";
-import {addCity, ICity} from "../redux/CitiesReducer";
+import {addCity} from "../redux/CitiesReducer";
 import {Dispatch} from "react";
 import {Action} from "redux";
+import {ICity} from "../types";
 
 export const fetchDefaultCitiesList = async (src: string, dispatch: Dispatch<Action>) => {
 	return new Promise<object>(async (resolve) => {
@@ -12,7 +13,6 @@ export const fetchDefaultCitiesList = async (src: string, dispatch: Dispatch<Act
 				id: item.id,
 				name: item.name,
 				main: {
-					feels_like: item.main.feels_like,
 					humidity: item.main.humidity,
 					pressure: item.main.pressure,
 					temp: item.main.temp,
@@ -27,6 +27,7 @@ export const fetchDefaultCitiesList = async (src: string, dispatch: Dispatch<Act
 					{
 						id: item.weather[0].id,
 						description: item.weather[0].description,
+						icon: item.weather[0].icon,
 					},
 				],
 				wind: {

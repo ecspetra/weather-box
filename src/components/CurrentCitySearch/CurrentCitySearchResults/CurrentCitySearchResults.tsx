@@ -3,14 +3,7 @@ import {fetchCurrentForecast} from "../../../handlers/fetchCurrentForecast";
 import {useAppDispatch} from "../../../hooks/hooks";
 
 import './assest/index.scss';
-
-export interface ICurrentCity {
-	name?: string;
-	state?: string;
-	country?: string;
-	lat: number;
-	lon: number;
-}
+import {ICurrentCity} from "../../../types";
 
 type CurrentCitySearchResultsPropTypes = {
 	citiesList: Array<ICurrentCity>;

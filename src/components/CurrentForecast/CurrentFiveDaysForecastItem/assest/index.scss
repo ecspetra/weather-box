@@ -1,0 +1,102 @@
+.current-five-days-forecast-item {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	width: calc((100% - 60px) / 5);
+
+	&:not(:last-child) {
+		margin-right: 15px;
+	}
+
+	span {
+		display: flex;
+		align-items: flex-end;
+
+		&:not(:last-of-type) {
+			margin-bottom: 6px;
+		}
+	}
+
+	&__info-wrap {
+		display: flex;
+		flex-direction: column;
+		padding: 20px;
+		border-radius: 10px;
+		background-color: rgba(white, .1);
+		backdrop-filter: blur(5px);
+		color: white;
+		margin-bottom: 15px;
+
+		&--night {
+			height: 100%;
+			background-color: rgba(#000715, .4);
+
+			.current-five-days-forecast-item {
+				&__label {
+					//background-image: linear-gradient(to right, rgba(#0059ff, 1), rgba(#5116ff, 1));
+					background-image: linear-gradient(to right, rgba(#0084a2, 1), rgba(#00be69, 1));
+				}
+			}
+		}
+	}
+
+	&__label {
+		//background-image: linear-gradient(to right, rgba(#ff006a, 1), rgba(#ff7716, 1));
+		background-image: linear-gradient(to right, rgba(#9000ef, 1), rgba(#e301be, 1));
+		padding: 2px 6px;
+		border-radius: 2px;
+		font-size: 14px;
+		margin-left: auto;
+	}
+
+	&__general {
+		display: flex;
+		justify-items: flex-start;
+		align-items: center;
+		padding-bottom: 10px;
+		margin-bottom: 10px;
+		border-bottom: 1px solid rgba(white, .3);
+	}
+
+	&__general-text {
+		width: 100%;
+	}
+
+	&__icon {
+		margin-right: 10px;
+	}
+
+	&__date {
+		margin-bottom: 20px;
+	}
+
+	&__humidity {
+
+	}
+
+	&__visibility {
+
+	}
+
+	&__pressure {
+
+	}
+
+	&__forecast-temp {
+
+	}
+
+	&__description {
+
+	}
+
+	&__wind-speed {
+
+	}
+
+	&__text {
+		font-size: 14px;
+		margin-right: 6px;
+		color: gray;
+	}
+}

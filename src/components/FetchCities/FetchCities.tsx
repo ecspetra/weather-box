@@ -1,8 +1,7 @@
 import React, {FC, useEffect, useState} from 'react';
 import {fetchCitiesByQuery} from "../../handlers/fetchCitiesByQuery";
-import CurrentCitySearchResults, {
-    ICurrentCity
-} from "../CurrentCitySearch/CurrentCitySearchResults/CurrentCitySearchResults";
+import CurrentCitySearchResults from "../CurrentCitySearch/CurrentCitySearchResults/CurrentCitySearchResults";
+import {ICurrentCity} from "../../types";
 
 type FetchCitiesPropTypes = {
     src: string;

@@ -1,7 +1,8 @@
 import React from 'react';
 import WeatherItem from "./WeatherItem/WeatherItem";
-import { citiesSelector, ICity } from "../../redux/CitiesReducer";
+import { citiesSelector } from "../../redux/CitiesReducer";
 import { useAppSelector } from "../../hooks/hooks";
+import {ICity} from "../../types";
 
 const WeatherList = () => {
 	const selectedCities = useAppSelector(citiesSelector);

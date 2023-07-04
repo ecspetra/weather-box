@@ -1,12 +1,29 @@
 .current-forecast {
+	position: relative;
 	min-height: 100vh;
-	background-image: url("images/image-bg-1.jpg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
 
+	&:after {
+		content: '';
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		background-color: rgba(#14161e, .7);
+	}
+
 	&__city-info {
-		margin-top: auto;
+		margin: auto 0 100px;
+	}
+
+	&__info-wrap {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
 	}
 
 	&__country {
@@ -16,47 +33,77 @@
 	&__city {
 		font-size: 8em;
 		font-family: 'Staatliches', cursive;
-	}
-
-	&__sun-time-wrap {
-		max-width: 200px;
 		margin-bottom: 40px;
 	}
 
 	&__button {
+		width: 100%;
+		max-width: 240px;
 		border: 0;
 		outline: 0;
 		padding: 20px;
 		border-radius: 4px;
+		background-image: linear-gradient(to right, rgba(#0084a2, 1), rgba(#00be69, 1));
+		color: white;
+		cursor: pointer;
 	}
 
 	&__sun-time {
 		display: flex;
-		background-color: rgba(black, .8);
-		border-radius: 24px;
-		padding: 12px 18px;
+		font-size: .2em;
 
 		&:not(:last-child) {
-			margin-bottom: 10px;
+			margin-right: 10px;
 		}
 	}
 
 	&__temp {
 		font-size: 6em;
+		//background-color: rgba(white, .1);
+		//background-color: white;
+		backdrop-filter: blur(5px);
+		border-radius: 14px;
+		padding: 20px 30px;
+		box-shadow: 0 4px 20px rgba(black, .5);
+	}
+
+	&__weather {
+		font-size: .5em;
 		display: block;
-		margin: 100px 0 20px;
+	}
+
+	&__temp-symbol {
+		font-size: .7em;
 	}
 
 	&__container {
+		position: relative;
 		display: flex;
 		flex-direction: column;
 		min-height: 100vh;
+		z-index: 1;
+	}
+
+	&__forecast-wrap {
+		width: 100%;
+	}
+
+	&__forecast-title {
+		padding-bottom: 20px;
+		margin-bottom: 20px;
+		border-bottom: 1px solid rgba(white, .3);
 	}
 
 	&__forecast {
 		display: flex;
 		justify-content: center;
-		align-items: flex-start;
+		align-items: stretch;
 		margin-top: auto;
+	}
+
+	&__three-hour-forecast {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
 	}
 }

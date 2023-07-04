@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {ICurrentCity} from "../components/CurrentCitySearch/CurrentCitySearchResults/CurrentCitySearchResults";
+import {ICurrentCity} from "../types";
 
 export const useUserLocation = () => {
 	const [defaultCity, setDefaultCity] = useState<ICurrentCity>({
