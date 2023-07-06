@@ -1,0 +1,58 @@
+@import "../../../App/assets/colors.module";
+
+.current-forecast-details-items {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+
+	&:not(:last-of-type) {
+		margin-bottom: 6px;
+	}
+
+	&__text-wrap {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__value {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		font-size: 14px;
+		font-weight: 600;
+	}
+
+	&__icon {
+		width: 20px;
+		height: 20px;
+		background-color: $background-color-1;
+		mask-repeat: no-repeat;
+		mask-position: center;
+		mask-size: contain;
+		margin-right: 6px;
+
+		&--humidity {
+			mask-image: url("../../../App/assets/icons/drop-icon.svg");
+		}
+
+		&--pressure {
+			mask-image: url("../../../App/assets/icons/pressure-icon.svg");
+		}
+
+		&--windSpeed {
+			mask-image: url("../../../App/assets/icons/wind-icon.svg");
+		}
+	}
+
+	&__text {
+		font-size: 14px;
+		font-weight: 300;
+	}
+
+	&__unit {
+		margin-left: 4px;
+		font-weight: 300;
+	}
+}

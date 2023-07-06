@@ -32,6 +32,11 @@ export const fetchCurrentForecast = async (city: ICurrentCity, dispatch: Dispatc
 				cityImage: unsplashImage,
 				icon: fetchedCurrentCityWeather.weather[0].icon,
 				timezone: fetchedForecast.city.timezone,
+				info: {
+					humidity: fetchedCurrentCityWeather.main.humidity,
+					pressure: fetchedCurrentCityWeather.main.pressure,
+					windSpeed: fetchedCurrentCityWeather.wind.speed,
+				},
 			},
 			list: fetchedForecast.list.map((item: ICurrentForecastList) => {
 				return {
@@ -41,7 +46,6 @@ export const fetchCurrentForecast = async (city: ICurrentCity, dispatch: Dispatc
 						pressure: item.main.pressure,
 						temp: item.main.temp,
 					},
-					visibility: item.visibility,
 					weather: [
 						{
 							id: item.weather[0].id,

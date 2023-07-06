@@ -1,21 +1,36 @@
+@import "../../../App/assets/colors.module";
+
 .current-three-hours-forecast-item {
+	width: 42px;
 	font-size: 14px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: rgba(white, .1);
-	border-radius: 12px;
-	padding: 10px;
+	color: $text-color-main;
+	margin-top: 15px;
+	padding: 10px 6px;
+	border-radius: 14px;
+	background-color: rgba($gradient-color-2, .1);
 
-	&__date {
-
+	&:not(:last-child) {
+		margin-right: 4px;
 	}
 
-	&__icon {
-
+	&__date {
+		font-size: 12px;
+		text-align: center;
+		padding-bottom: 6px;
+		margin-bottom: 6px;
+		color: $text-color-dark;
+		border-bottom: 2px solid $text-color-main;
 	}
 
 	&__temp {
+		font-size: 16px;
+		font-weight: 600;
+	}
 
+	&__temp-unit {
+		font-size: 10px;
 	}
 }

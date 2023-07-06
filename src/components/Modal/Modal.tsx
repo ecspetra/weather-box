@@ -36,12 +36,13 @@ const Modal: FC<ModalPropTypes> = ({ children, handleCloseModal, modalTitle, mod
 	return (
 		<ReactPortal wrapperId="modal-root">
 			<div className="modal">
-				<button onClick={() => {handleCloseModal(false)}}>Close</button>
 				<div className="modal__content" ref={modalRef}>
-					<h2 className="modal__title">{modalTitle}</h2>
-					<p className="modal__text">{modalText}</p>
 					<div className="modal__body">
-						{childrenWithProps}
+						<button className="modal__close-button" onClick={() => {handleCloseModal(false)}} />
+						<h2 className="modal__title">{modalTitle}</h2>
+						<div className="modal__inner">
+							{childrenWithProps}
+						</div>
 					</div>
 				</div>
 			</div>

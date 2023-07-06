@@ -22,7 +22,6 @@ export const fetchDefaultCitiesList = async (src: string, dispatch: Dispatch<Act
 					sunrise: item.sys.sunrise,
 					sunset: item.sys.sunset,
 				},
-				visibility: item.visibility,
 				weather: [
 					{
 						id: item.weather[0].id,

@@ -1,6 +1,5 @@
 import {Dispatch, SetStateAction} from 'react';
 import moment from "moment";
-import {getForecastIcon} from "./getForecastIcon";
 import {ICurrentFiveDaysForecastItem, ICurrentForecast, ICurrentForecastList} from "../types";
 
 export const getForecastItems = (selectedForecast: ICurrentForecast, cityTimezone: number, setForecastItems: Dispatch<SetStateAction<Array<ICurrentFiveDaysForecastItem>>>) => {
@@ -28,10 +27,9 @@ export const getForecastItems = (selectedForecast: ICurrentForecast, cityTimezon
 			day: {
 				description: day.weather[0].description,
 				temp: day.main.temp,
-				icon: getForecastIcon(day.weather[0].icon),
+				icon: day.weather[0].icon,
 				info: {
 					humidity: day.main.humidity,
-					visibility: day.visibility,
 					pressure: day.main.pressure,
 					windSpeed: day.wind.speed,
 				},
@@ -39,10 +37,9 @@ export const getForecastItems = (selectedForecast: ICurrentForecast, cityTimezon
 			night: {
 				description: night.weather[0].description,
 				temp: night.main.temp,
-				icon: getForecastIcon(night.weather[0].icon),
+				icon: night.weather[0].icon,
 				info: {
 					humidity: night.main.humidity,
-					visibility: night.visibility,
 					pressure: night.main.pressure,
 					windSpeed: night.wind.speed,
 				},

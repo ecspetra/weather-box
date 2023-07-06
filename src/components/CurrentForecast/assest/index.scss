@@ -1,3 +1,5 @@
+@import "../../App/assets/colors.module";
+
 .current-forecast {
 	position: relative;
 	min-height: 100vh;
@@ -24,30 +26,34 @@
 	}
 
 	&__country {
-		font-size: .7em;
+		font-size: 80px;
+		color: $text-color-main;
 	}
 
 	&__city {
-		font-size: 8em;
+		font-size: 120px;
 		font-family: 'Staatliches', cursive;
-		margin-bottom: 40px;
+		margin: 40px 0;
 	}
 
 	&__button {
+		position: relative;
 		width: 100%;
-		max-width: 240px;
+		max-width: 280px;
 		border: 0;
 		outline: 0;
-		padding: 20px;
-		border-radius: 4px;
-		background-image: linear-gradient(to right, rgba(#0084a2, 1), rgba(#00be69, 1));
-		color: white;
+		padding: 20px 40px;
+		border-radius: 30px;
+		background: none;
+		background-image: linear-gradient(to left, rgba($gradient-color-2, 1), rgba($gradient-color-1, 1));
+		color: $text-color-light;
 		cursor: pointer;
+		font-size: 18px;
+		font-weight: 600;
 	}
 
 	&__sun-time {
 		display: flex;
-		font-size: .2em;
 
 		&:not(:last-child) {
 			margin-right: 10px;
@@ -55,19 +61,84 @@
 	}
 
 	&__general {
-		font-size: 6em;
-		background-color: rgba(#000715, 1);
-		border-radius: 20px;
-		padding: 20px 30px;
-	}
+		width: 100%;
+		max-width: 424px;
+		background-color: $background-color-1;
+		border-radius: 30px;
+		padding: 30px;
+		margin-right: 80px;
 
-	&__weather {
-		font-size: .5em;
-		display: block;
-	}
+		.current-forecast-general-info {
+			&__info-wrap {
+				position: relative;
+				color: $text-color-dark;
+				padding-bottom: 0;
+				z-index: 2;
+			}
 
-	&__temp-symbol {
-		font-size: .7em;
+			&__forecast-temp-wrap {
+				display: block;
+			}
+
+			&__forecast-temp {
+				font-size: 80px;
+				color: $text-color-main;
+				background: -webkit-linear-gradient(rgba($gradient-color-1, 1), rgba($gradient-color-2, 1));
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				text-shadow: 4px 14px 20px rgba($gradient-color-2, .5);
+			}
+
+			&__icon-wrap {
+				width: 120px;
+				height: 120px;
+				flex: none;
+				background-image: linear-gradient(to bottom, rgba($gradient-color-1, 1), rgba($gradient-color-2, 1));
+				border-radius: 24px;
+				margin-right: 20px;
+				box-shadow: 4px 14px 20px rgba($gradient-color-2, .5);
+
+				&:after {
+					display: none;
+				}
+			}
+
+			&__icon {
+				width: 100%;
+				height: 100%;
+			}
+
+			&__forecast-temp-unit {
+				font-size: 50px;
+			}
+
+			&__description {
+				font-size: 28px;
+				color: $text-color-main;
+			}
+		}
+
+		.current-forecast-details-items {
+			color: $text-color-dark;
+
+			&:not(:last-of-type) {
+				margin-bottom: 10px;
+			}
+
+			&__icon {
+				background-color: $text-color-main;
+			}
+
+			&__value {
+				font-size: 16px;
+			}
+
+			&__text {
+				font-size: 16px;
+				font-weight: 600;
+				text-transform: uppercase;
+			}
+		}
 	}
 
 	&__container {
@@ -78,20 +149,22 @@
 		z-index: 1;
 	}
 
-	&__forecast-wrap {
-		width: 100%;
+	&__date {
+		font-size: 24px;
+		font-weight: 600;
+		padding-bottom: 6px;
+		border-bottom: 2px solid $text-color-main;
 	}
 
-	&__forecast-title {
-		padding-bottom: 20px;
-		margin-bottom: 20px;
-		border-bottom: 1px solid rgba(white, .3);
+	&__forecast-wrap {
+		width: 100%;
 	}
 
 	&__forecast {
 		display: flex;
 		justify-content: center;
 		align-items: stretch;
+		flex-wrap: wrap;
 		margin-top: auto;
 	}
 

@@ -1,7 +1,13 @@
+@import "../../App/assets/colors.module";
+
 .current-city-search {
 	position: relative;
 
 	&__input {
-		
+		width: 100%;
+		border: 2px solid $text-color-main;
+		padding: 10px 12px;
+		border-radius: 8px;
+		outline: 0;
 	}
 }

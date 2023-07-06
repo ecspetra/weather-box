@@ -11,7 +11,6 @@ export interface ICity {
 		sunrise: number,
 		sunset: number,
 	};
-	visibility: number;
 	weather: {
 		id: number,
 		description: string,
@@ -34,6 +33,11 @@ export interface ICurrentForecastCity {
 	cityImage: string;
 	icon: string;
 	timezone: number;
+	info: {
+		humidity: number,
+		pressure: number,
+		windSpeed: number,
+	};
 }
 
 export interface ICurrentForecastList {
@@ -43,7 +47,6 @@ export interface ICurrentForecastList {
 		pressure: number,
 		temp: number,
 	},
-	visibility: number;
 	weather: {
 		id: number,
 		description: string,
@@ -67,7 +70,6 @@ export interface ICurrentFiveDaysForecastItem {
 		icon: string;
 		info: {
 			humidity: number;
-			visibility: number;
 			pressure: number;
 			windSpeed: number;
 		};
@@ -78,7 +80,6 @@ export interface ICurrentFiveDaysForecastItem {
 		icon: string;
 		info: {
 			humidity: number;
-			visibility: number;
 			pressure: number;
 			windSpeed: number;
 		};

@@ -2,6 +2,7 @@ import React, {FC, useEffect, useState} from 'react';
 import {fetchCitiesByQuery} from "../../handlers/fetchCitiesByQuery";
 import CurrentCitySearchResults from "../CurrentCitySearch/CurrentCitySearchResults/CurrentCitySearchResults";
 import {ICurrentCity} from "../../types";
+import Loader from "../Loader/Loader";
 
 type FetchCitiesPropTypes = {
     src: string;
@@ -22,12 +23,10 @@ const FetchCities: FC<FetchCitiesPropTypes> = ({ src, ...rest }) => {
         }
     }, [src]);
 
-    if (isLoading === true) {
-        return <>Loading</>
-    } else if (!citiesList.length && isLoading === false) return null;
+    if (src === '') return null;
 
     return (
-        <CurrentCitySearchResults citiesList={citiesList} {...rest} />
+        <CurrentCitySearchResults citiesList={citiesList} isLoading={isLoading} {...rest} />
     );
 };
 

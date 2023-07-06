@@ -1,9 +1,42 @@
+@import "../../../App/assets/colors.module";
+
 .current-city-search-results {
 	position: absolute;
-	top: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 60px;
+	width: 100%;
+	top: calc(100% + 10px);
 	left: 0;
+	padding: 10px;
+	background-color: white;
+	border-radius: 14px;
+	box-shadow: 4px 14px 20px rgba($background-color-2, .5);
+	max-height: 140px;
+	overflow: auto;
+	text-align: center;
 
 	&__button {
+		width: 100%;
+		font-size: 14px;
+		font-weight: 600;
 		display: block;
+		background: none;
+		border: 0;
+		outline: 0;
+		cursor: pointer;
+		padding: 10px;
+		background-color: rgba($gradient-color-2, .2);
+		color: $text-color-main;
+
+		&:not(:last-child) {
+			margin-bottom: 6px;
+		}
+	}
+
+	&__text {
+		color: $text-color-dark;
 	}
 }

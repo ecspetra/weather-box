@@ -2,6 +2,7 @@ import React, {FC, JSX, useEffect, useState, Dispatch} from 'react';
 import { useAppDispatch } from "../../hooks/hooks";
 import {Action} from "redux";
 import {ICurrentCity} from "../../types";
+import Loader from "../Loader/Loader";
 
 
 type FetchSrcPropTypes = {
@@ -26,7 +27,7 @@ const FetchSrc: FC<FetchSrcPropTypes> = ({ city, children, fetchFunction }) => {
     }, []);
 
     if (isLoading === true) {
-        return <>Loading</>
+        return <Loader />
     } else if (!isResultExist && isLoading === false) return null;
 
     return (
