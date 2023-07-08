@@ -1,15 +1,15 @@
-import icon1 from './icon-1.svg';
-import icon2 from './icon-2.svg';
-import icon3 from './icon-3.svg';
-import icon4 from './icon-4.svg';
-import icon5 from './icon-5.svg';
-import icon6 from './icon-6.svg';
-import icon7 from './icon-7.svg';
-import icon8 from './icon-8.svg';
-import icon9 from './icon-9.svg';
-import icon10 from './icon-10.svg';
-import icon11 from './icon-11.svg';
-import icon12 from './icon-12.svg';
+import icon1 from './icon-1.json';
+import icon2 from './icon-2.json';
+import icon3 from './icon-3.json';
+import icon4 from './icon-4.json';
+import icon5 from './icon-5.json';
+import icon6 from './icon-6.json';
+import icon7 from './icon-7.json';
+import icon8 from './icon-8.json';
+import icon9 from './icon-9.json';
+import icon10 from './icon-10.json';
+import icon11 from './icon-11.json';
+import icon12 from './icon-12.json';
 
 export const WEATHER_ICONS = {
 	'01d': icon1,

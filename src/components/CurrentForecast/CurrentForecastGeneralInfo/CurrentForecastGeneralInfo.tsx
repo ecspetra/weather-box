@@ -4,6 +4,7 @@ import {ICurrentFiveDaysForecastItem} from "../../../types";
 
 import {getForecastIcon} from "../../../handlers/getForecastIcon";
 import './assest/index.scss';
+import {Player} from "@lottiefiles/react-lottie-player";
 
 type CurrentForecastItemPropTypes = {
 	objectToRender: ICurrentFiveDaysForecastItem['day'];
@@ -19,12 +20,17 @@ const CurrentForecastGeneralInfo: FC<CurrentForecastItemPropTypes> = ({ objectTo
 		<div className="current-forecast-general-info">
 			<div className="current-forecast-general-info__info-wrap">
 				<div className="current-forecast-general-info__icon-wrap">
-					<img className="current-forecast-general-info__icon weather-icon" src={getForecastIcon(objectToRender.icon)} alt="weather-img" />
+					<Player
+						src={getForecastIcon(objectToRender.icon)}
+						className="player"
+						loop
+						autoplay
+					/>
 				</div>
 				<div className="current-forecast-general-info__info">
 					<div className="current-forecast-general-info__forecast-temp-wrap">
 					<span className="current-forecast-general-info__forecast-temp">
-						{objectToRender.temp.toFixed(0)}
+						{Math.round(objectToRender.temp)}
 						<span className="current-forecast-general-info__forecast-temp-unit">
 							&#8451;
 						</span>

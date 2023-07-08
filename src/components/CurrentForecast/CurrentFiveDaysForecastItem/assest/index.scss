@@ -26,12 +26,6 @@
 				&__label {
 					background-image: linear-gradient(to right, rgba($gradient-color-3, 1), rgba($gradient-color-4, 1));
 				}
-
-				&__icon-wrap {
-					&:after {
-						background-color: rgba($text-color-main-2, .3);
-					}
-				}
 			}
 		}
 	}

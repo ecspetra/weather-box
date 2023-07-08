@@ -1,35 +1,88 @@
 @import "../../../App/assets/colors.module";
 
 .weather-item {
+	position: relative;
 	width: calc((100% - 30px) / 3);
-	background-color: white;
 	border-radius: 24px;
 	margin-bottom: 15px;
 	padding: 30px;
 	box-shadow: 4px 14px 20px rgba($background-color-2, .5);
-	color: $text-color-dark;
+	color: $text-color-light;
+	overflow: hidden;
+	background-color: $background-color-2;
 
-	&__city {
+	&:after {
+		content: '';
+		width: 110%;
+		height: 110%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		background-image: linear-gradient(to top, rgba($background-color-2, 1) 10%, rgba($background-color-2, .2));
+	}
+
+	&__background-image-wrap {
+		width: 110%;
+		height: 110%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		.loader {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+	}
+
+	&__background-image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	&__general-info {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		position: relative;
+		z-index: 1;
+		margin-bottom: 80px;
+	}
+
+	&__forecast-temp {
+		font-size: 80px;
+		font-weight: 600;
+	}
+
+	&__forecast-temp-unit {
+		font-size: 50px;
+	}
+
+	&__description {
+		display: block;
 		font-size: 24px;
 		font-weight: 600;
 	}
 
-	&__icon-wrap {
-		width: 40px;
-		height: 40px;
-		flex: none;
-		background-image: linear-gradient(to bottom, rgba($gradient-color-1, 1), rgba($gradient-color-2, 1));
-		border-radius: 14px;
-		margin-right: 20px;
-		box-shadow: 4px 14px 20px rgba($gradient-color-2, .5);
-
-		&:after {
-			display: none;
-		}
+	&__city {
+		font-size: 24px;
+		font-weight: 600;
+		position: relative;
+		z-index: 1;
 	}
 
-	&__icon {
-		width: 100%;
-		height: 100%;
+	&__country {
+		margin-left: 6px;
+	}
+
+	&__icon-wrap {
+		width: 80px;
+		height: 80px;
+		margin-right: 20px;
+		flex: none;
 	}
 }
