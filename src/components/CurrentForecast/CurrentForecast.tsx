@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {useAppSelector} from "../../hooks/hooks";
 import {forecastSelector} from "../../redux/CurrentForecastReducer";
 import moment from 'moment';
@@ -13,8 +13,10 @@ import CurrentThreeHoursForecastItem from "./CurrentThreeHoursForecastItem/Curre
 import CurrentForecastDetailsItems from "./CurrentForecastDetailsItem/CurrentForecastDetailsItems";
 import CurrentForecastGeneralInfo from "./CurrentForecastGeneralInfo/CurrentForecastGeneralInfo";
 import {getCurrentForecastGeneralInfo} from "../../handlers/getCurrentForecastGeneralInfo";
+import Loader from "../Loader/Loader";
 
 const CurrentForecast = () => {
+	const [isImageLoaded, setIsImageLoaded] = useState<boolean>(false);
 	const [forecastItems, setForecastItems] = useState<Array<ICurrentFiveDaysForecastItem>>([]);
 	const [threeHoursForecastItems, setThreeHoursForecastItems] = useState<Array<ICurrentThreeHoursForecastItem>>([]);
 	const [isShowModal, setIsShowModal] = useState<boolean>(false);
@@ -37,7 +39,11 @@ const CurrentForecast = () => {
 	if (!selectedForecast) return null;
 
 	return (
-		<div className="current-forecast" style={{backgroundImage: `url(${selectedForecast.city.cityImage})`}}>
+		<div className="current-forecast">
+			<div className="current-forecast__background-image-wrap">
+				{!isImageLoaded && <Loader />}
+				<img className="current-forecast__background-image" onLoad={() => setIsImageLoaded(true)} src={selectedForecast.city.cityImage} />
+			</div>
 			<div className="current-forecast__container container">
 				<div className="current-forecast__city-info">
 					<div className="current-forecast__info-wrap">

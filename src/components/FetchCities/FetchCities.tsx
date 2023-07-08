@@ -16,7 +16,7 @@ const FetchCities: FC<FetchCitiesPropTypes> = ({ src, ...rest }) => {
         if (src !== '') {
             setIsLoading(true);
 
-            fetchCitiesByQuery(src).then((data: []) => {
+            fetchCitiesByQuery(src).then((data: Array<ICurrentCity>) => {
                 if (data) setCitiesList(data);
                 setIsLoading(false);
             });
@@ -26,7 +26,7 @@ const FetchCities: FC<FetchCitiesPropTypes> = ({ src, ...rest }) => {
     if (src === '') return null;
 
     return (
-        <CurrentCitySearchResults citiesList={citiesList} isLoading={isLoading} {...rest} />
+        <CurrentCitySearchResults citiesList={citiesList} isLoading={isLoading} setIsLoading={setIsLoading} {...rest} />
     );
 };
 

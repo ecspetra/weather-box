@@ -28,7 +28,11 @@ const CurrentCitySearchResults: FC<CurrentCitySearchResultsPropTypes> = ({ citie
 		<div className="current-city-search-results">
 			{citiesList.map((item, idx) => {
 				return (
-					<button className="current-city-search-results__button" key={idx} onClick={() => handleSetCurrentCity(item)}>{`${item.name}, ${item.state}, ${item.country}`}</button>
+					<button className="current-city-search-results__button" key={idx} onClick={() => handleSetCurrentCity(item)}>
+						<span className="current-city-search-results__button-text">{`${item.name}, `}</span>
+						{item.state && <span className="current-city-search-results__button-text">{`${item.state}, `}</span>}
+						<span className="current-city-search-results__button-text">{item.country}</span>
+					</button>
 				)
 			})}
 		</div>

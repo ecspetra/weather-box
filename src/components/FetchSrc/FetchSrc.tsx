@@ -1,8 +1,9 @@
-import React, {FC, JSX, useEffect, useState, Dispatch} from 'react';
-import { useAppDispatch } from "../../hooks/hooks";
+import React, {FC, JSX, useEffect, useState, Dispatch, SetStateAction} from 'react';
+import {useAppDispatch, useAppSelector} from "../../hooks/hooks";
 import {Action} from "redux";
 import {ICurrentCity} from "../../types";
 import Loader from "../Loader/Loader";
+import {forecastSelector} from "../../redux/CurrentForecastReducer";
 
 
 type FetchSrcPropTypes = {
@@ -13,22 +14,19 @@ type FetchSrcPropTypes = {
 
 const FetchSrc: FC<FetchSrcPropTypes> = ({ city, children, fetchFunction }) => {
     const [isResultExist, setIsResultExist] = useState<boolean>();
-    const [isLoading, setIsLoading] = useState<boolean>(false);
     const dispatch = useAppDispatch();
+    const selectedForecast = useAppSelector(forecastSelector);
+    const isDataLoading = selectedForecast && selectedForecast.isLoading;
 
     useEffect(() => {
-        setIsLoading(true);
-
         fetchFunction(city, dispatch).then((data: object) => {
             if (data) setIsResultExist(true);
-            setIsLoading(false);
         });
-
     }, []);
 
-    if (isLoading === true) {
+    if (isDataLoading === true) {
         return <Loader />
-    } else if (!isResultExist && isLoading === false) return null;
+    } else if (!isResultExist && isDataLoading === false) return <div className="app__current-forecast-empty"><span className="app__current-forecast-empty-text">No results found</span></div>;
 
     return (
         <>

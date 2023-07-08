@@ -8,7 +8,6 @@ body {
 
 body {
 	font-family: 'Urbanist', sans-serif;
-	background-color: $background-color-2;
 }
 
 * {
@@ -28,13 +27,21 @@ h2 {
 .app {
 	color: $text-color-light;
 	line-height: 1;
+
+	&__current-city-weather {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: $background-color-1;
+		min-height: 100vh;
+	}
 }
 
 .container {
 	width: 100%;
 	max-width: 1280px;
 	margin: 0 auto;
-	padding: 20px;
+	padding: 80px 20px;
 }
 
 .weather-icon {

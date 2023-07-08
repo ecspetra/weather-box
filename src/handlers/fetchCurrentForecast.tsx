@@ -1,5 +1,5 @@
 import {fetchDataFromAPI} from "./fetchDataFromAPI";
-import {addForecast, clearForecast} from "../redux/CurrentForecastReducer";
+import {addForecast, clearForecast, setIsLoading} from "../redux/CurrentForecastReducer";
 import {Dispatch} from "react";
 import {Action} from "redux";
 import {getUnsplashImage} from "./getUnsplashImage";
@@ -7,6 +7,7 @@ import {ICurrentCity, ICurrentForecastList} from "../types";
 
 export const fetchCurrentForecast = async (city: ICurrentCity, dispatch: Dispatch<Action>) => {
 	await dispatch(clearForecast());
+	await dispatch(setIsLoading(true));
 
 	return new Promise<object>(async (resolve) => {
 		const linkToFetchCurrentForecast = `forecast?lat=${city.lat}&lon=${city.lon}`;
@@ -61,6 +62,7 @@ export const fetchCurrentForecast = async (city: ICurrentCity, dispatch: Dispatc
 		}
 
 		dispatch(addForecast(newForecast));
+		dispatch(setIsLoading(false));
 		resolve(fetchedForecast);
 	});
 }

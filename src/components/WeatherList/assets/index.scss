@@ -1,0 +1,8 @@
+@import "../../App/assets/colors.module";
+
+.weather-list {
+	display: flex;
+	justify-content: space-between;
+	align-items: stretch;
+	flex-wrap: wrap;
+}

@@ -8,5 +8,6 @@ export const fetchCitiesByQuery = async (src: string) => {
 		const result = await response.json();
 
 		resolve(result);
+		console.log(result)
 	});
 }

@@ -6,14 +6,13 @@ export const getForecastItems = (selectedForecast: ICurrentForecast, cityTimezon
 	const days: Array<ICurrentForecastList> = [];
 	const nights: Array<ICurrentForecastList> = [];
 	selectedForecast.list.map((item: ICurrentForecastList) => {
-		const searchedTime = moment(item.dt * 1000).utcOffset(cityTimezone).format("h:mm a");
+		const searchedTime = moment(item.dt * 1000).utcOffset(cityTimezone).format("HH:MM:SS");
+		const expectedDayTime = searchedTime >= '13:00:00' && searchedTime <= '16:00:00';
+		const expectedNightTime = searchedTime >= '01:00:00' && searchedTime <= '04:00:00 am';
 
-		const expectedDayTime = ['1:00 pm', '2:00 pm', '3:00 pm'];
-		const expectedNightTime = ['1:00 am', '2:00 am', '3:00 am'];
-
-		if (expectedDayTime.includes(searchedTime)) {
+		if (expectedDayTime) {
 			days.push(item);
-		} else if (expectedNightTime.includes(searchedTime)) {
+		} else if (expectedNightTime) {
 			nights.push(item);
 		}
 	});

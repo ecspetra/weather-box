@@ -58,6 +58,7 @@ export interface ICurrentForecastList {
 }
 
 export interface ICurrentForecast {
+	isLoading?: boolean;
 	city: ICurrentForecastCity;
 	list: Array<ICurrentForecastList>;
 }
