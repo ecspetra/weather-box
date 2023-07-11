@@ -19,12 +19,14 @@ const FetchSrc: FC<FetchSrcPropTypes> = ({ city, children, fetchFunction }) => {
     const isDataLoading = selectedForecast && selectedForecast.isLoading;
 
     useEffect(() => {
-        fetchFunction(city, dispatch).then((data: object) => {
-            if (data) setIsResultExist(true);
-        });
-    }, []);
+        if (city) {
+            fetchFunction(city, dispatch).then((data: object) => {
+                if (data) setIsResultExist(true);
+            });
+        }
+    }, [city]);
 
-    if (isDataLoading === true) {
+    if (isDataLoading === true || !isResultExist) {
         return <Loader />
     } else if (!isResultExist && isDataLoading === false) return <div className="app__current-forecast-empty"><span className="app__current-forecast-empty-text">No results found</span></div>;
 

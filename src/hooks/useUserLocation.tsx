@@ -2,26 +2,34 @@ import {useEffect, useState} from "react";
 import {ICurrentCity} from "../types";
 
 export const useUserLocation = () => {
-	const [defaultCity, setDefaultCity] = useState<ICurrentCity>({
-		lat: 49.24966,
-		lon: -123.119339,
-	});
+	const defaultGeolocation = {
+		lat: 51.50853,
+		lon: -0.12574,
+	}
+	const [currentGeolocation, setCurrentGeolocation] = useState<ICurrentCity>(null);
 	const [geolocationMessage, setGeolocationMessage] = useState<string>('');
 
 	const setUserLocation = (position: any) => {
-		setDefaultCity({
+		setCurrentGeolocation({
 			lat: position.coords.latitude,
 			lon: position.coords.longitude,
 		});
 	}
 
-	useEffect(() => {
+	const setLocationError = (positionError: any) => {
+		setCurrentGeolocation(defaultGeolocation);
+		setGeolocationMessage(positionError.message);
+	}
+
+	const getUserLocation = () => {
 		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(setUserLocation);
-		} else {
-			setGeolocationMessage('Geolocation is not supported by this browser');
-		}
+			navigator.geolocation.getCurrentPosition(setUserLocation, setLocationError);
+		} else setGeolocationMessage('Geolocation is not supported by this browser');
+	}
+
+	useEffect(() => {
+		getUserLocation();
 	}, []);
 
-	return [defaultCity, geolocationMessage];
+	return {currentGeolocation, geolocationMessage}
 }
