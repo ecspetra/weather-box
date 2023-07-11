@@ -16,7 +16,7 @@ const WeatherItem: FC<WeatherItemPropTypes> = ({ city }) => {
 	const [isImageLoaded, setIsImageLoaded] = useState<boolean>(false);
 
 	useEffect(() => {
-		getUnsplashImage(city.name).then((data) => setImageSrc(data));
+		getUnsplashImage(city.name, true).then((data) => setImageSrc(data));
 	}, []);
 
 	return (

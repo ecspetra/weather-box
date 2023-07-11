@@ -12,14 +12,15 @@ export const fetchCurrentForecast = async (city: ICurrentCity, dispatch: Dispatc
 	return new Promise<object>(async (resolve) => {
 		const linkToFetchCurrentForecast = `forecast?lat=${city.lat}&lon=${city.lon}`;
 		const fetchedForecast = await fetchDataFromAPI(linkToFetchCurrentForecast);
-		const latToFetchWeather = fetchedForecast.city.coord.lat;
-		const lonToFetchWeather = fetchedForecast.city.coord.lon;
-		const linkToFetchCurrentCityWeather = `weather?lat=${latToFetchWeather}&lon=${lonToFetchWeather}`;
+		const latToFetch = fetchedForecast.city.coord.lat;
+		const lonToFetch = fetchedForecast.city.coord.lon;
+		const linkToFetchCurrentCityWeather = `weather?lat=${latToFetch}&lon=${lonToFetch}`;
+		const linkToFetchCurrentAirQuality = `air_pollution?lat=${latToFetch}&lon=${lonToFetch}`;
 
-		const unsplashImage = await getUnsplashImage(fetchedForecast.city.name);
+		const unsplashImage = await getUnsplashImage(fetchedForecast.city.name, false);
 
 		const fetchedCurrentCityWeather = await fetchDataFromAPI(linkToFetchCurrentCityWeather);
-
+		const fetchedCurrentCityAirQuality = await fetchDataFromAPI(linkToFetchCurrentAirQuality);
 		const newForecast = {
 			city: {
 				id: fetchedForecast.city.id,
@@ -33,6 +34,7 @@ export const fetchCurrentForecast = async (city: ICurrentCity, dispatch: Dispatc
 				cityImage: unsplashImage,
 				icon: fetchedCurrentCityWeather.weather[0].icon,
 				timezone: fetchedForecast.city.timezone,
+				airQuality: fetchedCurrentCityAirQuality.list[0].main.aqi,
 				info: {
 					humidity: fetchedCurrentCityWeather.main.humidity,
 					pressure: fetchedCurrentCityWeather.main.pressure,

@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useAppSelector} from "../../hooks/hooks";
 import {forecastSelector} from "../../redux/CurrentForecastReducer";
 import moment from 'moment';
@@ -14,6 +14,7 @@ import CurrentForecastDetailsItems from "./CurrentForecastDetailsItem/CurrentFor
 import CurrentForecastGeneralInfo from "./CurrentForecastGeneralInfo/CurrentForecastGeneralInfo";
 import {getCurrentForecastGeneralInfo} from "../../handlers/getCurrentForecastGeneralInfo";
 import Loader from "../Loader/Loader";
+import {AIR_QUALITY_INDEX} from "../../apiConstants/airQualityIndex";
 
 const CurrentForecast = () => {
 	const [isImageLoaded, setIsImageLoaded] = useState<boolean>(false);
@@ -49,7 +50,7 @@ const CurrentForecast = () => {
 					<div className="current-forecast__info-wrap">
 						<div className="current-forecast__general">
 							<CurrentForecastGeneralInfo objectToRender={getCurrentForecastGeneralInfo(selectedForecast)} sunTime={sunTime} />
-							<CurrentForecastDetailsItems objectToRender={selectedForecast.city.info} />
+							<CurrentForecastDetailsItems objectToRender={selectedForecast.city.info} airQuality={selectedForecast.city.airQuality} />
 							<div className="current-forecast__three-hour-forecast">
 								{threeHoursForecastItems.map((item: ICurrentThreeHoursForecastItem, idx: number) => {
 									return <CurrentThreeHoursForecastItem forecastItem={item} cityTimezone={cityTimezone} key={idx} />

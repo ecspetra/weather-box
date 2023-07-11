@@ -33,6 +33,7 @@ export interface ICurrentForecastCity {
 	cityImage: string;
 	icon: string;
 	timezone: number;
+	airQuality: number;
 	info: {
 		humidity: number,
 		pressure: number,
