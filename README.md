@@ -9,7 +9,7 @@
 Weather forecast. This project offers weather forecast based on the user's location and lets them easily select any city using a search feature.
 
 ## Link
-https://weather-box.yuliia-tkachenko.dev/
+https://weather-box.yuliia-tkachenko.dev
 
 ## Created with:
 React, TypeScript, HTML, SCSS, OpenWeather API, Unsplash Image API
