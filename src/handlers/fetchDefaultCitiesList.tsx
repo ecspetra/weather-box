@@ -8,6 +8,7 @@ export const fetchDefaultCitiesList = async (
 	src: string,
 	dispatch: Dispatch<Action>
 ) => {
+	console.log("src:",src);
 	return new Promise<object | null>(async (resolve) => {
 		try {
 			const fetchedData = await fetchDataFromAPI(src);
