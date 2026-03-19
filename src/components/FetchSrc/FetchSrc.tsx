@@ -13,7 +13,7 @@ type FetchSrcPropTypes = {
 }
 
 const FetchSrc: FC<FetchSrcPropTypes> = ({ city, children, fetchFunction }) => {
-    const [isResultExist, setIsResultExist] = useState<boolean>();
+    const [isResultExist, setIsResultExist] = useState<boolean>(false);
     const dispatch = useAppDispatch();
     const selectedForecast = useAppSelector(forecastSelector);
     const isDataLoading = selectedForecast && selectedForecast.isLoading;
