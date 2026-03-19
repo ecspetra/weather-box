@@ -1,4 +1,4 @@
-export const API_KEY = '0197704d7a22682156cd2e1015ff7915';
+export const API_KEY = '60471d3a411bf5d99455cadab610055f';
 export const API_URL = `https://api.openweathermap.org/data/2.5/query&units=metric&appid=${API_KEY}`;
 export const GEOCODING_API_URL = `https://api.openweathermap.org/geo/1.0/direct?q=query&limit=5&appid=${API_KEY}`;
 export const DEFAULT_QUERY = `group?id=6167865,5128581,5368361,3451190,1850147,2950158,3117735,7839805,2643743`;
