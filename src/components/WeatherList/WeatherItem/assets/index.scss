@@ -86,3 +86,9 @@
 		flex: none;
 	}
 }
+
+@media (max-width: 1024px) {
+	.weather-item {
+		width: 100%;
+	}
+}

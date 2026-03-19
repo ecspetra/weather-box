@@ -47,6 +47,7 @@
 		justify-content: space-between;
 		margin-bottom: 80px;
 		flex-wrap: wrap;
+		gap: 20px;
 	}
 
 	&__country {
@@ -91,7 +92,7 @@
 		background-color: $background-color-1;
 		border-radius: 30px;
 		padding: 30px;
-		margin-right: 80px;
+		margin-right: 60px;
 
 		.current-forecast-general-info {
 			&__info-wrap {
@@ -190,6 +191,16 @@
 
 @media (max-width: 1024px) {
 	.current-forecast {
+		&__info-wrap {
+			gap: 80px;
+			justify-content: center;
+		}
+
+		&__button {
+			margin-left: auto;
+			margin-right: auto;
+		}
+
 		&__general {
 			margin-right: 0;
 		}
