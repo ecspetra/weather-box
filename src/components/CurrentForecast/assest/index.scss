@@ -46,6 +46,7 @@
 		align-items: center;
 		justify-content: space-between;
 		margin-bottom: 80px;
+		flex-wrap: wrap;
 	}
 
 	&__country {
@@ -57,6 +58,7 @@
 		font-size: 120px;
 		font-family: 'Staatliches', sans-serif;
 		margin: 40px 0;
+		word-break: break-all;
 	}
 
 	&__button {
@@ -183,5 +185,17 @@
 		display: flex;
 		justify-content: flex-start;
 		align-items: center;
+	}
+}
+
+@media (max-width: 1024px) {
+	.current-forecast {
+		&__general {
+			margin-right: 0;
+		}
+
+		&__city {
+			font-size: 80px;
+		}
 	}
 }

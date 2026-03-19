@@ -36,3 +36,13 @@
 		font-weight: 600;
 	}
 }
+
+@media (max-width: 1024px) {
+	.current-five-days-forecast-item {
+		width: 100%;
+		
+		&:not(:last-child) {
+			margin-right: 0;
+		}
+	}
+}
