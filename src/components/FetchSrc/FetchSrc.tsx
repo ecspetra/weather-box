@@ -23,7 +23,8 @@ const FetchSrc: FC<FetchSrcPropTypes> = ({ city, children, fetchFunction }) => {
 			setIsResultExist(null); 
 
 			fetchFunction(city, dispatch).then((data: object) => {
-				setIsResultExist(!!data);
+				console.log("DATA:", data);
+				if (data) setIsResultExist(true);
 			});
 		}
 	}, [city]);
