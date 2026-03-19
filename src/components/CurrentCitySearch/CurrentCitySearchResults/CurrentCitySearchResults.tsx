@@ -16,7 +16,7 @@ const CurrentCitySearchResults: FC<CurrentCitySearchResultsPropTypes> = ({ citie
 	const dispatch = useAppDispatch();
 
 	const handleSetCurrentCity = (city: ICurrentCity) => {
-		fetchCurrentForecast(city, dispatch);
+		fetchCurrentForecast(dispatch, city);
 		handleCloseModal(false);
 	}
 

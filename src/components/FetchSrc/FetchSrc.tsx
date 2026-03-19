@@ -9,7 +9,7 @@ import {forecastSelector} from "../../redux/CurrentForecastReducer";
 type FetchSrcPropTypes = {
     city: ICurrentCity | string;
     children: JSX.Element | JSX.Element[];
-    fetchFunction: (city: ICurrentCity | string, dispatch: Dispatch<Action>) => Promise<object>;
+    fetchFunction: (dispatch: Dispatch<Action>, city?: ICurrentCity | string) => Promise<object>;
 }
 
 const FetchSrc: FC<FetchSrcPropTypes> = ({ city, children, fetchFunction }) => {
@@ -20,7 +20,7 @@ const FetchSrc: FC<FetchSrcPropTypes> = ({ city, children, fetchFunction }) => {
 
     useEffect(() => {
         if (city) {
-            fetchFunction(city, dispatch).then((data: object) => {
+            fetchFunction(dispatch, city).then((data: object) => {
                 if (data) setIsResultExist(true);
             });
         }

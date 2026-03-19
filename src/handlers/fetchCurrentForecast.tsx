@@ -5,7 +5,7 @@ import {Action} from "redux";
 import {getUnsplashImage} from "./getUnsplashImage";
 import {ICurrentCity, ICurrentForecastList} from "../types";
 
-export const fetchCurrentForecast = async (city: ICurrentCity, dispatch: Dispatch<Action>) => {
+export const fetchCurrentForecast = async (dispatch: Dispatch<Action>, city: ICurrentCity) => {
 	await dispatch(clearForecast());
 	await dispatch(setIsLoading(true));
 
