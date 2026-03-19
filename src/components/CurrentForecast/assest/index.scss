@@ -46,7 +46,6 @@
 		align-items: center;
 		justify-content: space-between;
 		margin-bottom: 80px;
-		flex-wrap: wrap;
 		gap: 20px;
 	}
 
@@ -76,6 +75,7 @@
 		cursor: pointer;
 		font-size: 18px;
 		font-weight: 600;
+		display: block;
 	}
 
 	&__sun-time {
@@ -194,6 +194,11 @@
 		&__info-wrap {
 			gap: 80px;
 			justify-content: center;
+			flex-wrap: wrap;
+		}
+
+		&__date {
+			text-align: center;
 		}
 
 		&__button {

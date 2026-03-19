@@ -37,10 +37,16 @@
 	}
 }
 
+@media (max-width: 1280px) {
+	.current-five-days-forecast-item {
+		width: calc(30% - 12px);
+	}
+}
+
 @media (max-width: 1024px) {
 	.current-five-days-forecast-item {
 		width: 100%;
-		
+
 		&:not(:last-child) {
 			margin-right: 0;
 		}
