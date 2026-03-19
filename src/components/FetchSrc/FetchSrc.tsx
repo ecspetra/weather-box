@@ -13,35 +13,22 @@ type FetchSrcPropTypes = {
 }
 
 const FetchSrc: FC<FetchSrcPropTypes> = ({ city, children, fetchFunction }) => {
-    const [isResultExist, setIsResultExist] = useState<boolean | null>(null);
+    const [isResultExist, setIsResultExist] = useState<boolean>();
     const dispatch = useAppDispatch();
     const selectedForecast = useAppSelector(forecastSelector);
     const isDataLoading = selectedForecast && selectedForecast.isLoading;
 
     useEffect(() => {
-		if (city) {
-			setIsResultExist(null); 
+        if (city) {
+            fetchFunction(city, dispatch).then((data: object) => {
+                if (data) setIsResultExist(true);
+            });
+        }
+    }, [city]);
 
-			fetchFunction(city, dispatch).then((data: object) => {
-				console.log("DATA:", data);
-				if (data) setIsResultExist(true);
-			});
-		}
-	}, [city]);
-
-    if (isDataLoading || isResultExist === null) {
-		return <Loader />;
-	}
-
-	if (isResultExist === false) {
-		return (
-			<div className="app__current-forecast-empty">
-				<span className="app__current-forecast-empty-text">
-					No results found
-				</span>
-			</div>
-		);
-	}
+    if (isDataLoading === true || !isResultExist) {
+        return <Loader />
+    } else if (!isResultExist && isDataLoading === false) return <div className="app__current-forecast-empty"><span className="app__current-forecast-empty-text">No results found</span></div>;
 
     return (
         <>
