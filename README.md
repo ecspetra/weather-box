@@ -6,7 +6,7 @@
 
 ## Description
 
-Weather forecast. This project offers weather forecast based on the user's location and lets them easily select any city using a search feature.
+A responsive weather forecast application that displays real-time weather data based on geolocation. Users can also search and switch between cities to view up-to-date weather conditions anywhere in the world.
 
 ## Link
 https://weather-box.yuliia-tkachenko.dev
